@@ -8,7 +8,7 @@ const STEPS = [
   { key: 'embed', label: 'EMBED', desc: 'all-MiniLM-L6-v2' },
   { key: 'store', label: 'STORE', desc: 'ChromaDB' },
   { key: 'query', label: 'QUERY', desc: 'Vector Search' },
-  { key: 'answer', label: 'ANSWER', desc: 'Ollama LLM' },
+  { key: 'answer', label: 'ANSWER', desc: 'AI Generated' },
 ];
 
 export const PipelineBar = () => {

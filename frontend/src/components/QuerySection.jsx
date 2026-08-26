@@ -34,7 +34,7 @@ export const QuerySection = () => {
             ASK YOUR DOCUMENT
           </h2>
           <p className="text-xs text-slate-500">
-            Search ChromaDB vector store and generate grounded answer using Ollama local LLM.
+            Search ChromaDB vector store and generate a grounded answer using AI.
           </p>
         </div>
       </div>
