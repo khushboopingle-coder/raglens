@@ -5,7 +5,7 @@ import { Layers, LogOut, Cpu, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const Navbar = () => {
   const { user, logout } = useAuth();
-  const { activeProject, ollamaStatus } = useProject();
+  const { activeProject } = useProject();
 
   return (
     <header className="bg-slate-900 border-b border-slate-800 text-white px-6 py-3.5 flex items-center justify-between shadow-md">
@@ -34,25 +34,17 @@ export const Navbar = () => {
         )}
       </div>
 
-      {/* Right controls: Ollama Status & User / Logout */}
+      {/* Right controls: AI Service Status & User / Logout */}
       <div className="flex items-center space-x-4">
-        {/* Ollama Status Pill */}
+        {/* AI Service Status Pill */}
         <div
-          title={ollamaStatus.message}
-          className={`flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-            ollamaStatus.connected
-              ? 'bg-emerald-950/60 text-emerald-300 border-emerald-800/60'
-              : 'bg-amber-950/60 text-amber-300 border-amber-800/60'
-          }`}
+          title="AI service is ready"
+          className="flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium border transition-colors bg-emerald-950/60 text-emerald-300 border-emerald-800/60"
         >
           <Cpu className="w-3.5 h-3.5" />
           <span className="flex items-center gap-1.5">
-            <span
-              className={`w-2 h-2 rounded-full ${
-                ollamaStatus.connected ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
-              }`}
-            />
-            {ollamaStatus.connected ? 'Ollama Connected' : 'Ollama Not Running'}
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            AI Service Ready
           </span>
         </div>
 

@@ -3,7 +3,7 @@ import { useProject } from '../context/ProjectContext';
 import { Bot, Copy, Check, AlertTriangle, ShieldCheck, Cpu } from 'lucide-react';
 
 export const AIAnswerCard = () => {
-  const { queryResult, ollamaStatus } = useProject();
+  const { queryResult } = useProject();
   const [copied, setCopied] = useState(false);
 
   if (!queryResult || !queryResult.ai_answer) return null;
@@ -14,7 +14,7 @@ export const AIAnswerCard = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const isOllamaConnected = queryResult.ollama_connected;
+  const isAiConnected = queryResult.ollama_connected;
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-6">
@@ -26,19 +26,19 @@ export const AIAnswerCard = () => {
           <div>
             <h2 className="text-sm font-bold text-slate-900 tracking-tight">AI ANSWER</h2>
             <p className="text-[11px] text-slate-500">
-              Grounded response from Ollama model ({ollamaStatus.model})
+              Grounded response from the AI service
             </p>
           </div>
         </div>
 
         <div className="flex items-center space-x-2">
-          {isOllamaConnected ? (
+          {isAiConnected ? (
             <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
               <ShieldCheck className="w-3.5 h-3.5" /> Grounded Context
             </span>
           ) : (
             <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
-              <AlertTriangle className="w-3.5 h-3.5" /> Ollama Offline
+              <AlertTriangle className="w-3.5 h-3.5" /> AI Service Offline
             </span>
           )}
 
@@ -52,13 +52,13 @@ export const AIAnswerCard = () => {
         </div>
       </div>
 
-      {!isOllamaConnected && (
+      {!isAiConnected && (
         <div className="bg-amber-50 border border-amber-200 text-amber-800 text-xs p-3.5 rounded-xl mb-4 flex items-center space-x-2.5">
           <Cpu className="w-4 h-4 text-amber-600 flex-shrink-0" />
           <div>
-            <p className="font-semibold">Ollama is not running locally.</p>
+            <p className="font-semibold">AI service is temporarily unavailable.</p>
             <p className="text-[11px] text-amber-700 mt-0.5">
-              Start Ollama on your system (<code className="bg-amber-100 px-1 py-0.5 rounded">ollama serve</code>) to generate local LLM answers. Your document upload, chunking, embeddings, and ChromaDB vector retrieval remain fully functional!
+              Your document upload, chunking, embeddings, and vector retrieval remain fully functional!
             </p>
           </div>
         </div>
