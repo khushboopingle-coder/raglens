@@ -20,8 +20,11 @@ export const Navbar = () => {
               RAGLens
             </h1>
             <p className="text-xs text-indigo-300 font-medium tracking-wide">
-              Local RAG Observability
-            </p>
+  The Transparent Mind of RAG
+</p>
+<p className="text-[10px] text-indigo-400/70 font-medium tracking-wide">
+  Open the Black Box of RAG
+</p>
           </div>
         </div>
 

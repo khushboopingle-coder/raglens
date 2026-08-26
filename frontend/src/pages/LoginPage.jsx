@@ -51,7 +51,10 @@ export const LoginPage = () => {
           </div>
           <h1 className="text-2xl font-black text-white tracking-tight">RAGLens</h1>
           <p className="text-xs font-semibold text-indigo-400 tracking-wider uppercase mt-1">
-            Local RAG Observability
+            The Transparent Mind of RAG
+          </p>
+          <p className="text-[11px] font-medium text-indigo-400/70 tracking-wider uppercase mt-0.5">
+            Open the Black Box of RAG
           </p>
         </div>
 
@@ -190,7 +193,7 @@ export const LoginPage = () => {
               <Database className="w-3 h-3 text-purple-400" /> ChromaDB
             </span>
             <span className="flex items-center gap-1">
-              <Cpu className="w-3 h-3 text-emerald-400" /> Ollama Local
+              <Cpu className="w-3 h-3 text-emerald-400" /> AI-Powered
             </span>
           </div>
         </div>
