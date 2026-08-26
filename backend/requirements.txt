@@ -11,3 +11,4 @@ sentence-transformers==3.4.1
 pypdf==5.3.0
 httpx==0.28.1
 python-dotenv==1.0.1
+email-validator
