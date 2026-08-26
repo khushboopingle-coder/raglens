@@ -7,6 +7,7 @@ pyjwt==2.10.1
 passlib[bcrypt]==1.7.4
 python-multipart==0.0.20
 chromadb==0.6.3
+# Local embedding generation (optional for lightweight cloud deployments using EMBEDDING_PROVIDER=huggingface)
 sentence-transformers==3.4.1
 pypdf==5.3.0
 httpx==0.28.1

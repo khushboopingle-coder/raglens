@@ -14,8 +14,7 @@ MAX_QUESTION_LENGTH = 1000
 MAX_CONTEXT_LENGTH = 12000
 
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
-GROQ_MODEL = "llama-3.3-70b-versatile"
-
+GROQ_MODEL = "openai/gpt-oss-120b"
 def validate_and_format_input(question: str, context_chunks: List[Dict[str, Any]]) -> Tuple[str, str]:
     """
     Validates and truncates input question and document context to prevent resource abuse.
