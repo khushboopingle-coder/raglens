@@ -1,4 +1,15 @@
+import re
 from typing import List, Dict
+
+def sanitize_unicode(text: str) -> str:
+    """
+    Strips invalid/unpaired Unicode surrogate code points (U+D800 to U+DFFF)
+    to ensure UTF-8 encoding safety for SQLite database storage and JSON serialization.
+    """
+    if not text:
+        return ""
+    cleaned = re.sub(r'[\uD800-\uDFFF]', '', text)
+    return cleaned.encode('utf-8', 'surrogatepass').decode('utf-8', 'ignore')
 
 def split_text_into_chunks(text: str, chunk_size: int = 500, chunk_overlap: int = 50) -> List[Dict]:
     """
@@ -8,7 +19,7 @@ def split_text_into_chunks(text: str, chunk_size: int = 500, chunk_overlap: int 
     if not text or not text.strip():
         return []
         
-    text = text.strip()
+    text = sanitize_unicode(text).strip()
     chunk_size = max(50, chunk_size)
     chunk_overlap = min(max(0, chunk_overlap), chunk_size - 10)
     step_stride = max(1, chunk_size - chunk_overlap)
@@ -41,7 +52,7 @@ def split_text_into_chunks(text: str, chunk_size: int = 500, chunk_overlap: int 
                     if space_break != -1:
                         end = space_break + 1
 
-        chunk_content = text[start:end].strip()
+        chunk_content = sanitize_unicode(text[start:end]).strip()
         if chunk_content:
             chunks.append({
                 "chunk_index": chunk_idx,

@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const API_BASE_URL = rawApiUrl.replace(/\/+$/, '');
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
 
 // Interceptor to attach Bearer token
@@ -57,11 +55,7 @@ export const projectAPI = {
 
 export const documentAPI = {
   uploadDocument: async (projectId, formData) => {
-    const response = await api.post(`/projects/${projectId}/documents`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    const response = await api.post(`/projects/${projectId}/documents`, formData);
     return response.data;
   },
   processText: async (projectId, textData) => {
@@ -69,11 +63,7 @@ export const documentAPI = {
     return response.data;
   },
   chunkUpload: async (projectId, formData) => {
-    const response = await api.post(`/projects/${projectId}/chunk-upload`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    const response = await api.post(`/projects/${projectId}/chunk-upload`, formData);
     return response.data;
   },
   chunkText: async (projectId, textData) => {
